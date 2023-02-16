@@ -32,7 +32,8 @@ steps:
 
 - script: echo '$(Build.BuildNumber)' 
 
-- task: PublishPipelineArtifact@1
+- task: PublishBuildArtifacts@1
   inputs:
-    targetPath: '$(Pipeline.Workspace)'
-    publishLocation: 'pipeline'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)' 
+    ArtifactName: '$(Build.BuildNumber)'
+    publishLocation: 'Container'
